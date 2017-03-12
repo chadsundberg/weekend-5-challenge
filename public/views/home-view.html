@@ -1,36 +1,67 @@
 <body ng-controller="HomeController">
-  <h2>New Employee Form</h2>
-  {{home.testMessage}}
+  <div id="newEmployeeForm">
+  <h1>New Employee Form</h1>
 <form class="col-md-12">
   <div class="form-group col-md-6">
 <label for="firstName">First Name</label>
-<input ng-model="home.newEmployee.firstName">
+<input ng-model="home.newEmployee.first_name">
   </div>
   <div class="form-group col-md-6">
 <label for="lastName">Last Name</label>
-<input ng-model="home.newEmployee.lastName">
+<input ng-model="home.newEmployee.last_name">
   </div>
   <div class="form-group col-md-6">
 <label for="idNumber">ID Number</label>
-<input ng-model="home.newEmployee.idNumber">
+<input ng-model="home.newEmployee.id_number">
   </div>
   <div class="form-group col-md-6">
 <label for="jobTitle">Job Title</label>
-<input ng-model="home.newEmployee.jobTitle">
+<input ng-model="home.newEmployee.job_title">
   </div>
   <div class="form-group col-md-6">
 <label for="annualSalary">Annual Salary</label>
-<input ng-model="home.newEmployee.annualSalary">
+<input ng-model="home.newEmployee.annual_salary">
   </div>
   <div class="form-group col-md-6">
-<button class="btn-primary" ng-click="home.addNewEmployee()">Add New Employee</button>
+<button class="btn-primary" ng-click="home.addEmployee()">Add New Employee</button>
   </div>
 </form>
-<div ng-repeat="employee in home.employeeList.list" ng-class="{active: employee.status, inactive: !employee.status}" class="row col-xs-12">
+</div>
+
+<div id = "employeeRoster">
+  <h2>Employee Roster</h2>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>ID Number</th>
+      <th>Job Title</th>
+      <th>Annual Salary</th>
+      <th>Status</th>
+    </tr>
+    <tr ng-repeat="employee in home.employeeList.list">
+      <td>{{employee.first_name}}</td>
+      <td>{{employee.last_name}}</td>
+      <td>{{employee.id_number}}</td>
+      <td>{{employee.job_title}}</td>
+      <td>{{employee.annual_salary}}</td>
+      <td><button ng-click="ec.statusChangeInactive(employee.id)" type="button" name="button">Set Inactive</button></td>
+    </tr>
+    <!-- <tr ng-repeat="employee in ec.expendituresList.list" ng-hide="employee.active" ng-class="{inactive: !employee.active}">
+      <td>{{employee.first_name}}</td>
+      <td>{{employee.last_name}}</td>
+      <td>{{employee.id_number}}</td>
+      <td>{{employee.job_title}}</td>
+      <td>{{employee.annual_salary}}</td>
+      <td><button ng-click="ec.statusChangeActive(employee.id)" type="button" name="button">Set Active</button></td>
+    </tr> -->
+  </table>
+</div>
+<!-- <div ng-repeat="employee in home.employeeList.list" ng-class="{active: employee.status, inactive: !employee.status}" class="row col-xs-12"> -->
 <!-- {{task.name}} and the id number is {{task.id}} -->
-<span class="col-xs-6">{{employee}} status is {{employee.status}}</span>
+<!-- <span class="col-xs-6">{{employee}} status is {{employee.status}}</span>
 <span class="col-xs-3" ng-hide="employee.status"><button ng-click="home.deactivateEmployee(employee.id)" class="btn btn-primary">Deactivate</button></span>
 <span class="col-xs-3" ng-show="employee.status"><button ng-click="home.activateEmployee(employee.id)" class="btn btn-info">Activate</button></span>
-<span class="col-xs-3"><button ng-click="home.deleteEmployee(task.id)" class="btn btn-danger">Delete</button></span>
-</div>
+<span class="col-xs-3"><button ng-click="home.deleteEmployee(task.id)" class="btn btn-danger">Delete</button></span> -->
+<!-- </div> -->
 </body>

@@ -20,6 +20,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controllerAs: 'two'
         })
         .otherwise ( {
-            redirectTo: '/home'
+            redirectTo: 'home'
         });
 }]);

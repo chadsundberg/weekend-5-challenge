@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
   <head>
     <meta charset="utf-8">
     <title>Weekend 5 Challenge</title>
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/scripts/controllers/one.controller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/two.controller.js"></script>
   </head>
-  <body >
+  <body ng-app="myApp" >
     <header class="jumbotron text-center" ng-include="'/views/templates/header.html'"></header>
     <nav ng-include="'views/templates/nav.html'"></nav>
     <main ng-view></main>
