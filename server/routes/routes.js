@@ -20,7 +20,7 @@ router.get('/employees', function(req, res) {
       res.sendStatus(500);
     }else{
       // SELECT * FROM task;
-      client.query('SELECT * FROM employees ORDER BY status asc;', function(err, result) {
+      client.query('SELECT * FROM employees ORDER BY status desc;', function(err, result) {
         done(); // close the connection db
 
         if(err){
