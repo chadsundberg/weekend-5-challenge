@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Handle index file separately
 app.get('/', function(req, res) {
-  res.sendFile(path.rresolve('.public/index.html'));
+  res.sendFile(path.resolve('.public/index.html'));
 });
 
-app.use('/', router);
+app.use('/', router); // if I had put '/employees' in here, I would be able to access employees using '/' in routes.js
 
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function() {
