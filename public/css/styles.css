@@ -1,13 +1,17 @@
 .jumbotron {
-  background-color: pink;
+  background-color: #e0e0d1;
 }
 
+/*#newEmployeeForm, #monthlySalaryExpenses, #employeeSection {
+  margin: 20px;
+}*/
+
 #offset {
-  background-color: gray;
+  background-color: #e0e0d1;
 }
 
 #pretty_header {
-  background-color: aqua;
+  background-color: #d9b3ff;
 }
 
 label {
