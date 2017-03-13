@@ -1,6 +1,6 @@
 <body ng-controller="HomeController">
   <div id="newEmployeeForm">
-    <h1>New Employee Form</h1>
+    <h2 id="pretty_header">New Employee Form</h2>
     <form class="col-md-12">
       <div class="form-group col-md-6">
         <label for="firstName">First Name</label>
@@ -29,16 +29,16 @@
   </div>
 
   <div id="monthlySalaryExpenses" class="col-md-12">
-    <h2>Monthly Salary Expenses</h2>
+    <h2 id="pretty_header">Monthly Salary Expenses</h2>
     <div class="col-md-6">
       <h3>Total Monthly Salary Expenses: ${{home.calculateMonthlySalaryExp()}}</h3>
     </div>
   </div>
 
-  <div id = "employeeRoster">
+  <div id="employeeSection">
     <h2>Employee Roster</h2>
     <table>
-      <tr class="row col-xs-18">
+      <tr id="offset" class="row col-xs-18">
         <th class="col-xs-3">First Name</th>
         <th class="col-xs-3">Last Name</th>
         <th class="col-xs-3">ID Number</th>

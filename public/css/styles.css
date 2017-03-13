@@ -1,3 +1,15 @@
+.jumbotron {
+  background-color: pink;
+}
+
+#offset {
+  background-color: gray;
+}
+
+#pretty_header {
+  background-color: aqua;
+}
+
 label {
   display: inline-block;
 }
