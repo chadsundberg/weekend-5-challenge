@@ -10,9 +10,9 @@ var config = {
 };
 var pool = new pg.Pool(config);
 
-  // sample GET request
+// sample GET request
 
-  router.get('/employees', function(req, res) {
+router.get('/employees', function(req, res) {
   console.log('hit my get all employees route');
   pool.connect(function(err, client, done) {
     if(err){
@@ -20,7 +20,7 @@ var pool = new pg.Pool(config);
       res.sendStatus(500);
     }else{
       // SELECT * FROM task;
-      client.query('SELECT * FROM employees;', function(err, result) {
+      client.query('SELECT * FROM employees ORDER BY status asc;', function(err, result) {
         done(); // close the connection db
 
         if(err){
@@ -47,14 +47,14 @@ router.post('/employees', function(req, res) {
       res.sendStatus(500);
     }else{
       client.query('INSERT INTO employees (first_name, last_name, id_number, job_title, annual_salary ) VALUES ($1, $2, $3, $4, $5 );',
-        [employeeObject.first_name, employeeObject.last_name, employeeObject.id_number, employeeObject.job_title, employeeObject.annual_salary], function(err, result) {
-          done();
-          if(err){
-            console.log(err);
-            res.sendStatus(500); // the world exploded
-          }else{
-            res.sendStatus(201);
-          }
+      [employeeObject.first_name, employeeObject.last_name, employeeObject.id_number, employeeObject.job_title, employeeObject.annual_salary], function(err, result) {
+        done();
+        if(err){
+          console.log(err);
+          res.sendStatus(500); // the world exploded
+        }else{
+          res.sendStatus(201);
+        }
       });
     }
   });
@@ -68,20 +68,20 @@ router.put('/activate/:id', function(req,res) {
       console.log(err);
       res.sendStatus(500);
     } else {
-        client.query('UPDATE employees SET status=TRUE WHERE ID=$1;',
-          [idOfEmployeeToActivate],
-          function(err, result) {
-            done();
-            if(err) {
-              console.log(err);
-              res.sendStatus(500);
-            } else {
-                res.sendStatus(200);
-              }
-          }
-        );
+      client.query('UPDATE employees SET status=TRUE WHERE ID=$1;',
+      [idOfEmployeeToActivate],
+      function(err, result) {
+        done();
+        if(err) {
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }
       }
-  });//end pool.connect
+    );
+  }
+});//end pool.connect
 });//end activate router.put
 
 router.put('/deactivate/:id', function(req,res) {
@@ -92,20 +92,20 @@ router.put('/deactivate/:id', function(req,res) {
       console.log(err);
       res.sendStatus(500);
     } else {
-        client.query('UPDATE employees SET status=FALSE WHERE ID=$1;',
-          [idOfEmployeeToDeactivate],
-          function(err, result) {
-            done();
-            if(err) {
-              console.log(err);
-              res.sendStatus(500);
-            } else {
-                res.status(200).send(result.rows);
-              }
-          }
-        );
+      client.query('UPDATE employees SET status=FALSE WHERE ID=$1;',
+      [idOfEmployeeToDeactivate],
+      function(err, result) {
+        done();
+        if(err) {
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          res.status(200).send(result.rows);
+        }
       }
-  });//end pool.connect
+    );
+  }
+});//end pool.connect
 });//end deactivate router.put
 
 // router.delete('/:id', function(req,res) {

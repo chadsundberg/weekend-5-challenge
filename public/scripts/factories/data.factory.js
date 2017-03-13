@@ -1,27 +1,27 @@
 myApp.factory('DataFactory', ['$http', function($http) {
-var employeeList = { list: [] };
-console.log(employeeList);
+  var employeeList = { list: [] };
+  console.log(employeeList);
 
-getEmployees();
-
-function getEmployees() {
-  $http({
-    method: 'GET',
-    url: '/employees'
-  }).then(function(response) {
-    employeeList.list = response.data;
-  });
-}
-
-function addEmployee(newEmployee) {
-  $http({
-  method: 'POST',
-  url: '/employees',
-  data: newEmployee
-}).then(function(newEmployee){
   getEmployees();
-});
-}
+
+  function getEmployees() {
+    $http({
+      method: 'GET',
+      url: '/employees'
+    }).then(function(response) {
+      employeeList.list = response.data;
+    });
+  }
+
+  function addEmployee(newEmployee) {
+    $http({
+      method: 'POST',
+      url: '/employees',
+      data: newEmployee
+    }).then(function(newEmployee){
+      getEmployees();
+    });
+  }
 
   function activateEmployee(employeeID) {
     $http({
@@ -45,11 +45,12 @@ function addEmployee(newEmployee) {
 
 
 
+
   return {
-      allEmployees: employeeList,
-      addEmployee: addEmployee,
-      activateEmployee: activateEmployee,
-      deactivateEmployee: deactivateEmployee
+    allEmployees: employeeList,
+    addEmployee: addEmployee,
+    activateEmployee: activateEmployee,
+    deactivateEmployee: deactivateEmployee
   }
 
 }]);

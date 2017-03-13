@@ -1,60 +1,60 @@
 <body ng-controller="HomeController">
   <div id="newEmployeeForm">
-  <h1>New Employee Form</h1>
-<form class="col-md-12">
-  <div class="form-group col-md-6">
-<label for="firstName">First Name</label>
-<input ng-model="home.newEmployee.first_name">
+    <h1>New Employee Form</h1>
+    <form class="col-md-12">
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input ng-model="home.newEmployee.first_name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input ng-model="home.newEmployee.last_name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="idNumber">ID Number</label>
+        <input ng-model="home.newEmployee.id_number">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="jobTitle">Job Title</label>
+        <input ng-model="home.newEmployee.job_title">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="annualSalary">Annual Salary</label>
+        <input ng-model="home.newEmployee.annual_salary">
+      </div>
+      <div class="form-group col-md-6">
+        <button class="btn-primary" ng-click="home.addEmployee()">Add New Employee</button>
+      </div>
+    </form>
   </div>
-  <div class="form-group col-md-6">
-<label for="lastName">Last Name</label>
-<input ng-model="home.newEmployee.last_name">
-  </div>
-  <div class="form-group col-md-6">
-<label for="idNumber">ID Number</label>
-<input ng-model="home.newEmployee.id_number">
-  </div>
-  <div class="form-group col-md-6">
-<label for="jobTitle">Job Title</label>
-<input ng-model="home.newEmployee.job_title">
-  </div>
-  <div class="form-group col-md-6">
-<label for="annualSalary">Annual Salary</label>
-<input ng-model="home.newEmployee.annual_salary">
-  </div>
-  <div class="form-group col-md-6">
-<button class="btn-primary" ng-click="home.addEmployee()">Add New Employee</button>
-  </div>
-</form>
-</div>
 
-<div id="monthlySalaryExpenses" class="col-md-12">
-  <h2>Monthly Salary Expenses</h2>
-  <div class="col-md-6">
-      <h3>Total Monthly Salary Expenses: {{home.calculateMonthlySalaryExp()}}</h3>
+  <div id="monthlySalaryExpenses" class="col-md-12">
+    <h2>Monthly Salary Expenses</h2>
+    <div class="col-md-6">
+      <h3>Total Monthly Salary Expenses: ${{home.calculateMonthlySalaryExp()}}</h3>
     </div>
   </div>
 
-<div id = "employeeRoster">
-  <h2>Employee Roster</h2>
-  <table>
-    <tr class="row col-xs-18">
-      <th class="col-xs-3">First Name</th>
-      <th class="col-xs-3">Last Name</th>
-      <th class="col-xs-3">ID Number</th>
-      <th class="col-xs-3">Job Title</th>
-      <th class="col-xs-3">Annual Salary</th>
-      <th class="col-xs-3">Status</th>
-    </tr>
-    <tr class="row col-xs-18" ng-repeat="employee in home.employeeList.list" ng-class="{deactivate: employee.status, active: employee.status}" class="row col-xs-12">
-      <td class="col-xs-3">{{employee.first_name}}</td>
-      <td class="col-xs-3">{{employee.last_name}}</td>
-      <td class="col-xs-3">{{employee.id_number}}</td>
-      <td class="col-xs-3">{{employee.job_title}}</td>
-      <td class="col-xs-3">{{employee.annual_salary}}</td>
-      <td><span class="col-xs-3" ng-show="employee.status"><button ng-click="home.deactivateEmployee(employee.id)" class="btn btn-primary">Deactivate</button></span></td>
-      <td><span class="col-xs-3" ng-hide="employee.status"><button ng-click="home.activateEmployee(employee.id)" class="btn btn-info">Activate</button></span></td>
-    </tr>
-  </table>
-</div>
+  <div id = "employeeRoster">
+    <h2>Employee Roster</h2>
+    <table>
+      <tr class="row col-xs-18">
+        <th class="col-xs-3">First Name</th>
+        <th class="col-xs-3">Last Name</th>
+        <th class="col-xs-3">ID Number</th>
+        <th class="col-xs-3">Job Title</th>
+        <th class="col-xs-3">Annual Salary</th>
+        <th class="col-xs-3">Status</th>
+      </tr>
+      <tr class="row col-xs-18" ng-repeat="employee in home.employeeList.list" ng-class="{deactivate: employee.status, active: employee.status}" class="row col-xs-12">
+        <td class="col-xs-3">{{employee.first_name}}</td>
+        <td class="col-xs-3">{{employee.last_name}}</td>
+        <td class="col-xs-3">{{employee.id_number}}</td>
+        <td class="col-xs-3">{{employee.job_title}}</td>
+        <td class="col-xs-3">${{employee.annual_salary}}</td>
+        <td><span class="col-xs-3" ng-show="employee.status"><button ng-click="home.deactivateEmployee(employee.id)" class="btn btn-primary">Deactivate</button></span></td>
+        <td><span class="col-xs-3" ng-hide="employee.status"><button ng-click="home.activateEmployee(employee.id)" class="btn btn-info">Activate</button></span></td>
+      </tr>
+    </table>
+  </div>
 </body>
