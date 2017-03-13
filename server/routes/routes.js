@@ -60,4 +60,76 @@ router.post('/employees', function(req, res) {
   });
 });
 
+router.put('/activate/:id', function(req,res) {
+  var idOfEmployeeToActivate = req.params.id;
+  console.log(req.params.id);
+  pool.connect(function(err, client, done) {
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+        client.query('UPDATE employees SET status=TRUE WHERE ID=$1;',
+          [idOfEmployeeToActivate],
+          function(err, result) {
+            done();
+            if(err) {
+              console.log(err);
+              res.sendStatus(500);
+            } else {
+                res.sendStatus(200);
+              }
+          }
+        );
+      }
+  });//end pool.connect
+});//end activate router.put
+
+router.put('/deactivate/:id', function(req,res) {
+  var idOfEmployeeToDeactivate = req.params.id;
+  console.log(req.params.id);
+  pool.connect(function(err, client, done) {
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+        client.query('UPDATE employees SET status=FALSE WHERE ID=$1;',
+          [idOfEmployeeToDeactivate],
+          function(err, result) {
+            done();
+            if(err) {
+              console.log(err);
+              res.sendStatus(500);
+            } else {
+                res.status(200).send(result.rows);
+              }
+          }
+        );
+      }
+  });//end pool.connect
+});//end deactivate router.put
+
+// router.delete('/:id', function(req,res) {
+//   var idOfEmployeeToDelete = req.params.id;
+//   console.log('deleting employee with id#',  idOfEmployeeToDelete);
+//   pool.connect(function(err, client, done) {
+//     if(err) {
+//       console.log(err);
+//       res.sendStatus(500);
+//     } else {
+//         client.query('DELETE FROM employees WHERE id=$1;',
+//           [idOfEmployeeToDelete],
+//           function(err, result) {
+//             done();
+//             if(err) {
+//               console.log(err);
+//               res.sendStatus(500);
+//             } else {
+//                 res.sendStatus(200);
+//               }
+//           }
+//         );
+//       }
+//   });//end pool.connect
+// });//end employees router.delete
+
 module.exports = router;

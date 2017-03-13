@@ -3,13 +3,19 @@ myApp.controller('HomeController', ['DataFactory', function(DataFactory) {
   self.employeeList = DataFactory.allEmployees;
   self.newEmployee = {};
 
-
-
-
   self.addEmployee = function() {
     DataFactory.addEmployee(self.newEmployee);
-    console.log(self.newEmployee);
     self.newEmployee = {};
+  }
+
+  self.activateEmployee = function(employeeID) {
+    console.log('activate employee clicked on', employeeID);
+    DataFactory.activateEmployee(employeeID);
+  }
+
+  self.deactivateEmployee = function(employeeID) {
+    console.log('deactivate employee clicked on', employeeID);
+    DataFactory.deactivateEmployee(employeeID);
   }
 
 

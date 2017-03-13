@@ -19,18 +19,37 @@ function addEmployee(newEmployee) {
   url: '/employees',
   data: newEmployee
 }).then(function(newEmployee){
-  // console.log(newEmployee);
-
-  // self.newTask = {};
   getEmployees();
 });
 }
+
+  function activateEmployee(employeeID) {
+    $http({
+      method: 'PUT',
+      url: '/activate/' + employeeID
+    }).then(function(response) {
+      console.log('activate response:', response.data);
+      getEmployees();
+    });
+  }
+
+  function deactivateEmployee(employeeID) {
+    $http({
+      method: 'PUT',
+      url: '/deactivate/' + employeeID
+    }).then(function(response) {
+      console.log('deactivate response:', response.data);
+      getEmployees();
+    });
+  }
 
 
 
   return {
       allEmployees: employeeList,
-      addEmployee: addEmployee
+      addEmployee: addEmployee,
+      activateEmployee: activateEmployee,
+      deactivateEmployee: deactivateEmployee
   }
 
 }]);
