@@ -1,10 +1,10 @@
 .jumbotron {
-  background-color: #e0e0d1;
+  background-color: #99e6ff;
 }
 
-/*#newEmployeeForm, #monthlySalaryExpenses, #employeeSection {
-  margin: 20px;
-}*/
+.btn-primary {
+  background-color: #ff5050;
+}
 
 #offset {
   background-color: #e0e0d1;
